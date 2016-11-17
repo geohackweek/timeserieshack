@@ -1,9 +1,9 @@
----
+<!-- ---
 title: timeserieshack
 weight: 1
 permalink: /
 layout: default
----
+--- -->
 ###timeserieshack##
 The **timeserieshack** project will build tools and workflows to use Google Earth Engine JavaScript API to explore climate variables & phenology.
 
