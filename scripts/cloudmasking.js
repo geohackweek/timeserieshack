@@ -1,12 +1,12 @@
-Map.setCenter(-119.5065, 47.763, 13)
-// added from EE imports
-var geometry = /* color: d63000 */ee.Geometry.MultiPoint(),
-    roi = /* color: 98ff00 */ee.Geometry.MultiPoint(
+//------import geometry--------//
+var geometry = /* color: 0B4A8B */ee.Geometry.MultiPoint(),
+    roi = /* color: ffc82d */ee.Geometry.MultiPoint(
         [[-119.366455078125, 47.826433352857094],
          [-119.50584411621094, 47.764460796790274],
          [-119.48936462402344, 47.76457618400039]]);
-/// end EE imports
+//--------------//
 
+Map.setCenter(-119.5065, 47.763, 13)
 var cloudCoverMax = .5
 
 

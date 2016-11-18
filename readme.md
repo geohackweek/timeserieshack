@@ -17,12 +17,14 @@ Our multi-disciplinary team is composed of:
 * Zhengxin Lang, UW SEFS
 * Jane Yang, UW
 * Catherine Kuhn, UW SEFS
-* Meg Halabisky, UW SEFS
+* Meghan Halabisky, UW SEFS
 
 Here's a link to [*#timeserieshack* hackpad:](https://hackpad.com/timeserieshack-DLZpOv1FBQL)
 
 Here is a list of scripts that we have developed during **geohackweek2016**:
+* [NDVI-poi-2-chart-inspector.js](scripts/NDVI-poi-2-chart-inspector.js)
 * [PrecipVolume.js](scripts/PrecipVolume.js)
 * [cloudmasking.js](scripts/cloudmasking.js)
 * [export_video.js](scripts/export_video.js)
 * [ChartsStatsforPolygons.js](scripts/ChartsStatsforPolygons.js)
+* [ChartsStatsforPolygonsandChangedetection.js](scripts/ChartsStatsforPolygonsandChangedetection.js)

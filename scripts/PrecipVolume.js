@@ -12,17 +12,14 @@
 // Load an image of daily precipitation in mm/day.
 var precip = ee.Image(ee.ImageCollection('NASA/ORNL/DAYMET').first());
 
-//Map.addLayer(precip, {}, "precip");
-
-
 // Load watersheds from a Fusion Table and filter to the continental US.
 var sheds = ee.FeatureCollection('ft:1IXfrLpTHX4dtdj1LcNXjJADBB-d93rkdJ9acSEWK')
   .filterBounds(ee.Geometry.Rectangle(-127.18, 19.39, -62.75, 51.29));
 
 // Add the mean of each image as new properties of each feature.
-var withPrecip = precip.reduceRegions(sheds, ee.Reducer.mean());
+var shedMeanPrecips = precip.reduceRegions(sheds, ee.Reducer.mean());
 // var palette = ['FF0000', '00FF00', '0000FF'];
-Map.addLayer(withPrecip, {palette: ['green', 'yellow']}, "withprecip");
+Map.addLayer(shedMeanPrecips, {palette: ['green', 'yellow']}, "withprecip");
 
 /**/
 // This function computes total rainfall in cubic meters.
@@ -33,7 +30,7 @@ var prcpVolume = function(feature) {
   return feature.set('volume', volume);
 };
 
-var highVolume = withPrecip
+var highVolumes = shedMeanPrecips
   // Map the function over the collection.
   .map(prcpVolume)
   // Sort descending.
@@ -42,16 +39,42 @@ var highVolume = withPrecip
   .limit(5);
 
 // Print the resulting FeatureCollection
-print(highVolume.first().get('volume'));
-Map.addLayer(highVolume, {palette:['red', 'blue']}, "highVolume");
+print(highVolumes.first().get('volume'));
+Map.addLayer(highVolumes, {palette:['red', 'blue']}, "highVolume");
 
-// added by Joel - start of aggregating stats for console output
+print('highVolumes', highVolumes);
+
 // Print the number of watersheds.
-print('Count: ', highVolume.size());
+print('Count: ', highVolumes.size());
 
 // Print stats for an area property.
-print('Area aggregate stats:', highVolume.aggregate_stats('AreaSqKm'));
-print('Area mean:', highVolume.get('mean'));
+print('Area aggregate stats:', highVolumes.aggregate_stats('AreaSqKm'));
+//print('Area mean:', highVolume.get('mean')); //this doesn't work
+
+// prints names & volume of highVolume watersheds
+var sum_vol = 0;
+var features = highVolumes.getInfo().features;
+for (var i = 0; i < features.length; ++i) {
+  var thisFeature = features[i].properties;
+  print(thisFeature);
+  print(thisFeature.name + ': ' + thisFeature.volume);
+  sum_vol += thisFeature.volume;
+}
+sum_vol /= features.length;
+print("Area mean:", sum_vol);
+//print(highVolumes.getInfo());
+//print(highVolumes.values.mean);
+
+
+// Export
+// Export highVolume to csv
+Export.table.toDrive({
+  collection: highVolumes,
+  description: 'exportVolumes',
+  fileFormat: 'CSV'
+});
+
+
 
 /*
 //
