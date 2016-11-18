@@ -21,3 +21,8 @@ Our team is composed of:
 * Meg Halabisky
 
 Here's a link to [*#timeserieshack* hackpad:](https://hackpad.com/timeserieshack-DLZpOv1FBQL)
+
+Here is a list of scripts that we have developed during **geohackweek 2016**:
+* [PrecipVolume.js](scripts/PrecipVolume.js)
+* [cloudmasking.js](scripts/cloudmasking.js)
+* [export_video.js](scripts/export_video.js)
