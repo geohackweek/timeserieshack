@@ -4,12 +4,12 @@ weight: 1
 permalink: /
 layout: default
 --- -->
-###timeserieshack##
-The **timeserieshack** project will build tools and workflows to use Google Earth Engine JavaScript API to explore climate variables & phenology.
+###timeserieshack###
+The **timeserieshack** project will build tools and workflows to use Google Earth Engine JavaScript API to explore ecosystem dynamics.
 
-We are developing a **workflow** which will allow any analyst to investigate climate time-series data within a designated study area (defined by a vector).
+We are developing a **workflow** which will allow any analyst to investigate climate time-series data within a designated area of interest (defined by a vector).
 
-Our team is composed of:
+Our multi-disciplinary team is composed of:
 * Keala Hagmann, UW SEFS
 * Joel Masselink, Vulcan
 * Christiana Ade, NC State
